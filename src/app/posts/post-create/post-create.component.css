@@ -7,6 +7,8 @@ mat-form-field {
 button {
   color: green;
   font-family: "Silkscreen Expanded", "Comic Sans MS";
-  margin-left: 30%;
-  margin-top: 7px;
+}
+
+div {
+  text-align: center;
 }

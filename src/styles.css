@@ -9,3 +9,13 @@ html {
   margin-left: 30%;
   background-color: lawngreen;
 }
+
+/* LEFT align */
+.mat-list .mat-list-item.left{
+  justify-content: flex-start;
+}
+
+/* RIGHT align */
+.mat-list .mat-list-item.right{
+  justify-content: flex-end;
+}
