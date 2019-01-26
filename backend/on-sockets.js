@@ -14,15 +14,15 @@ Sockets.prototype.open = function open() {
         });
 
         socket.on('new player', function() {
-            callback.AddNewPlayer(socket.id, this.emit);
+            this.callback.AddNewPlayer(socket.id, this.emit);
         });
 
         socket.on('disconnect', function() {
-            callback.RemovePlayer(socket.id);
+            this.callback.RemovePlayer(socket.id);
         });
 
         socket.on('intent', function() {
-            callback.OnPlayerSendIntent(socket.id);
+            this.callback.OnPlayerSendIntent(socket.id);
         });
     })
 
