@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$snakecycle-primary: mat-palette($mat-green, 900);
+$snakecycle-accent: mat-palette($mat-blue, 900);
+$snakecycle-warn: mat-palette($mat-deep-orange, A200);
+
+// create theme (use mat-dark-theme for themes with dark backgrounds)
+$snakecycle: mat-light-theme(
+    $snakecycle-primary,
+    $snakecycle-accent,
+    $snakecycle-warn
+);
+
+@include angular-material-theme($snakecycle);
+
