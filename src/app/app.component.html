@@ -1,7 +1,8 @@
-<app-header></app-header>
+<app-header *ngIf = newUser></app-header>
 <main>
-  <app-post-create></app-post-create>
-  <app-post-list></app-post-list>
+  <app-post-create *ngIf = newUser></app-post-create>
+  <app-post-list *ngIf = newUser></app-post-list>
+  <app-gamepage *ngIf = "!newUser"></app-gamepage>
 </main>
 
 
