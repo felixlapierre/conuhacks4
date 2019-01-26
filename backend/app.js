@@ -38,22 +38,13 @@ app.post("/posts", (req, res, next) => {
 });
 
 app.get('/posts',(req, res, next) => {
-  const posts = [
-    {
-      id: "sdadsadsa",
-      title: "First serve-side post",
-      content: "This is coming from the server"
-    },
-    {
-      id: "vjnxvoisdn",
-      title: "Second serve-side post",
-      content: "This is coming from the server!"
-    }
-  ];
-  res.status(200).json({
-    message: 'Posts fetched successfully',
-    posts: posts
-  });
+  Post.find()
+    .then(documents => {
+      res.status(200).json({
+        message: 'Posts fetched successfully',
+        posts: documents
+      });
+    });
 });
 
 app.use(express.static(path.join(__dirname + "/../dist/MeanApp")));
