@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {PostsService} from '../posts.service';
 
 @Component({
   selector: 'app-gamepage',
   templateUrl: './gamepage.component.html',
   styleUrls: ['./gamepage.component.css']
 })
-export class GamepageComponent implements OnInit {
+export class GamepageComponent {
+  @Input() newUserEntered: boolean;
 
-  constructor() { }
+  constructor(public postsService: PostsService) {}
 
-  ngOnInit() {
+  returnToHomePage() {
+    this.newUserEntered = true;
+    this.postsService.newUserEntered.emit(this.newUserEntered);
   }
-
 }
