@@ -6,7 +6,7 @@ import {PostsService} from './posts/posts.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   newUser = true;
 
   constructor(public postsService: PostsService) {}

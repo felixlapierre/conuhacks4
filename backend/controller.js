@@ -46,6 +46,11 @@ function RemovePlayer(id)
   var roomId = mapPlayerIdToRoomId[id];
   var room = rooms[roomId];
 
+  if(room == undefined)
+  {
+    return;
+  }
+
   room.RemovePlayer(id)
   room.StopGame();
 }
@@ -54,7 +59,10 @@ function OnPlayerSendIntent(id, intent)
 {
   var roomId = mapPlayerIdToRoomId[id];
   var room = rooms[roomId];
-
+  if(room == undefined)
+  {
+    return;
+  }
   room.UpdatePlayerIntent(id, intent);
 }
 
