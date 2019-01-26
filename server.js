@@ -1,7 +1,6 @@
 const app = require("./backend/app");
 const debug = require("debug")("node-angular");
 const http = require("http");
-const socketIO = require('socket.io');
 
 const normalizePort = val => {
   var port = parseInt(val, 10);
@@ -52,10 +51,6 @@ server.on("error", onError);
 server.on("listening", onListening);
 server.listen(port);
 
-var io = socketIO(server);
-
-io.on('connection', function(socket) {
-  socket.on('new connection', function() {
-    console.log("Detected a new connection!");
-  })
-})
+var SocketsListener = require("./backend/on-sockets");
+var sockets = new SocketsListener(server);
+sockets.open();
