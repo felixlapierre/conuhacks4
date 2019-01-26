@@ -7,22 +7,22 @@ function Sockets(server, callback) {
 }
 
 Sockets.prototype.open = function open() {
-
+    var callback = this.callback;
     this.io.on('connection', function (socket) {
         socket.on('new connection', function () {
             console.log("Detected a new connection!");
         });
 
         socket.on('new player', function() {
-            this.callback.AddNewPlayer(socket.id, this.emit);
+            callback.AddNewPlayer(socket.id, this.emit);
         });
 
         socket.on('disconnect', function() {
-            this.callback.RemovePlayer(socket.id);
+            callback.RemovePlayer(socket.id);
         });
 
         socket.on('intent', function() {
-            this.callback.OnPlayerSendIntent(socket.id);
+            callback.OnPlayerSendIntent(socket.id);
         });
     })
 
