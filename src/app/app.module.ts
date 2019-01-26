@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import {PostCreateComponent} from './posts/post-create/post-create.component';
 import { HeaderComponent } from './header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
-
+import { GamepageComponent } from './posts/gamepage/gamepage.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +17,7 @@ import { PostListComponent } from './posts/post-list/post-list.component';
     PostCreateComponent,
     HeaderComponent,
     PostListComponent,
+    GamepageComponent,
   ],
   imports: [
     BrowserModule,

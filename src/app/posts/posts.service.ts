@@ -1,10 +1,12 @@
 import {PostModel} from './post.model';
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
 export class PostsService {
+  public newUserEntered = new EventEmitter<boolean>();
+
   private posts: PostModel[] = [];
   private postsUpdated = new Subject<PostModel[]>();
 

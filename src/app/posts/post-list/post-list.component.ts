@@ -9,7 +9,7 @@ import {PostsService} from '../posts.service';
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css']
 })
-export class PostListComponent implements OnInit, OnDestroy {
+export class PostListComponent implements OnInit/*, OnDestroy*/ {
   @Input() posts: PostModel[] = [];
   private postsSub: Subscription;
 
@@ -23,7 +23,7 @@ export class PostListComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-    this.postsSub.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //   this.postsSub.unsubscribe();
+  // }
 }
