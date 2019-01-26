@@ -48,6 +48,7 @@ app.get('/posts',(req, res, next) => {
 });
 
 app.use(express.static(path.join(__dirname + "/../dist/MeanApp")));
+app.use("/static", express.static(path.join(__dirname + "/../static")));
 
 app.get('/', function(request, response) {
 	response.sendFile(path.join(__dirname, '/../dist/MeanApp/index.html'));
