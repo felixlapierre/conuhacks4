@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const Post = require('./models/post');
 
 const app = express();
+const path = require('path');
 
 mongoose.connect("mongodb+srv://mike:Mum1sn1ttrukgSD7@meanapp-qbtdl.mongodb.net/node-angular?retryWrites=true")
   .then(() => {
@@ -53,6 +54,13 @@ app.get('/posts',(req, res, next) => {
     message: 'Posts fetched successfully',
     posts: posts
   });
+});
+
+app.use(express.static(path.join(__dirname + "/../dist/MeanApp")));
+app.use("/static", express.static(path.join(__dirname + "/../static")));
+
+app.get('/', function(request, response) {
+	response.sendFile(path.join(__dirname, '/../dist/MeanApp/index.html'));
 });
 
 module.exports = app;
