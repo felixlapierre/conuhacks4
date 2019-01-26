@@ -11,3 +11,7 @@ h3 {
   text-align: center;
   color: darkgreen;
 }
+
+mat-list, mat-list-item {
+  font-family: "Silkscreen Expanded", "Comic Sans MS";
+}
