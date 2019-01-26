@@ -22,7 +22,7 @@ export class PostsService {
   }
 
   private sortArray(posts: PostModel[]) {
-    posts.sort((a, b) => a.content > b.content ? -1 : a.content < b.content ? 1 : 0);
+    posts.sort((a, b) => +a.content > +b.content ? -1 : +a.content < +b.content ? 1 : 0);
     return posts.slice(0, 5);
   }
 

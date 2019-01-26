@@ -12,7 +12,6 @@ export class GamepageComponent {
   constructor(public postsService: PostsService) {}
 
   returnToHomePage() {
-    console.log('it is returning stuff');
     this.newUserEntered = true;
     this.postsService.newUserEntered.emit(this.newUserEntered);
   }

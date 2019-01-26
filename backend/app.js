@@ -47,6 +47,11 @@ app.get('/posts',(req, res, next) => {
     });
 });
 
+app.delete('/posts/:id', (req, res, next) => {
+  console.log(req.params.id)
+  res.status(200).json({message: "post deleted my dude!"});
+});
+
 app.use(express.static(path.join(__dirname + "/../dist/MeanApp")));
 app.use("/static", express.static(path.join(__dirname + "/../static")));
 
