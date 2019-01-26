@@ -1,7 +1,7 @@
 var socket = io();
 
 socket.emit('new connection');
-var movement = {
+var intent = {
 	up: false,
 	down: false,
 	left: false,
@@ -12,16 +12,16 @@ var movement = {
 document.addEventListener('keydown', function(event) {
 	switch(event.keyCode) {
 		case 65: //A
-		movement.left = true;
+		intent.left = true;
 		break;
 		case 87: //W
-		movement.up = true;
+		intent.up = true;
 		break;
 		case 68: //D
-		movement.right = true;
+		intent.right = true;
 		break;
 		case 83: //S
-		movement.down = true;
+		intent.down = true;
 		break;
 	}
 });
@@ -29,16 +29,16 @@ document.addEventListener('keydown', function(event) {
 document.addEventListener('keyup', function(event) {
 	switch(event.keyCode) {
 		case 65: //A
-		movement.left = false;
+		intent.left = false;
 		break;
 		case 87: //W
-		movement.up = false;
+		intent.up = false;
 		break;
 		case 68: //D
-		movement.right = false;
+		intent.right = false;
 		break;
 		case 83: //S
-		movement.down = false;
+		intent.down = false;
 		break;
 	}
 });
