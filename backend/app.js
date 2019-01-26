@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const path = require('path');
+
 const Post = require('./models/post');
 
 const app = express();
@@ -55,4 +57,6 @@ app.get('/posts',(req, res, next) => {
   });
 });
 
+app.use(express.static('static'));
+console.log("Set up the static folder");
 module.exports = app;
