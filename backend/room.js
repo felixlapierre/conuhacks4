@@ -30,14 +30,22 @@ Room.prototype.AddNewPlayer = function AddNewPlayer(player)
     return this.id;
 };
 
-function randomPaperCreate(level){
+function randomItemCreate(level){
   var x = Math.floor(Math.random()*32);
   var y = Math.floor(Math.random()*16);
 
+  var material = Math.random()*3;
+
   if(level.get(x, y) == undefined) {
-    level.put(new Item(x, y), x, y);
+    if(material < 1) {
+      level.put(new Item(x, y, "paper"), x, y);
+    }else if(material >= 1 && material <2){
+      level.put(new Item(x, y, "plastic"), x, y);
+    }else if(material >= 2 && material < 3){
+      //level.put(new Item(x, y, "trash"), x, y);
+    }
   } else {
-    randomPaperCreate(level);
+    randomItemCreate(level);
   }
 }
 
@@ -50,7 +58,7 @@ Room.prototype.Update = function Update()
 {
   counter++;
   if (counter == 60) {
-    randomPaperCreate(this.level);
+    randomItemCreate(this.level);
     counter = 0;
   }
 

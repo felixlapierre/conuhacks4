@@ -1,9 +1,9 @@
-function Item(x, y)
+function Item(x, y, material)
 {
     this.x = x;
     this.y = y;
     this.type = 'item';
-    this.material = 'paper';
+    this.material = material;
     this.tail = null;
     this.owner = null;
 }

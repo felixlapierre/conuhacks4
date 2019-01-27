@@ -10,7 +10,9 @@ images.wall.src = "static/wall.png";
 images.floor = new Image();
 images.floor.src = "static/floor.png";
 images.paper = new Image();
-images.paper.src = "static/paper.png";
+images.paper.src = "static/bottle.png";
+images.plastic = new Image();
+images.plastic.src = "static/bottle.png";
 
 function SetupCanvas()
 {
@@ -65,11 +67,18 @@ function DrawSingleTile(object, x, y)
         DrawPlayer(object, x, y);
     }
     else if(object.type == "wall")
-        DrawWall(x, y);
-    else if(object.type == "item")
     {
-        DrawFloor(x, y);
-        DrawImage(images.paper, x, y, 0);
+      DrawWall(x, y);
+    }
+    else if(object.type == "item" && item.material == "paper")
+    {
+      DrawFloor(x, y);
+      DrawImage(images.paper, x, y, 0);
+    }
+    else if(object.type == "item" && object.material == "plastic")
+    {
+      DrawFloor(x, y);
+      DrawImage(images.plastic, x, y, 0);
     }
     
 }

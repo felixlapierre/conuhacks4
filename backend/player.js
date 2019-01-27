@@ -1,4 +1,5 @@
 function Player(socket){
+    this.score = 0;
     this.x=0;
     this.y=0;
     this.intent = {
@@ -36,6 +37,7 @@ Player.prototype.Move = function Move(level, x, y)
 
     if(object != undefined && object.type == "item")
     {
+        this.score++;
         object.owner = this.id;
         if(this.tail == null)
         {
