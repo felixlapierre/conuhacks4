@@ -11,6 +11,7 @@ export class GamepageComponent implements OnInit {
   @Input() newUserEntered: boolean;
   @Input() username: string;
   subscription: Subscription;
+  highscore: number;
 
   constructor(public postsService: PostsService) {
   }
@@ -26,6 +27,7 @@ export class GamepageComponent implements OnInit {
     console.log(this.postsService.username);
 /*    console.log(this.username);
     console.log(this.subscription);*/
-    this.postsService.addPost(this.postsService.username, '46');
+    this.highscore = Math.floor(Math.random() * 100) + 40;
+    this.postsService.addPost(this.postsService.username, this.highscore.toString());
   }
 }
