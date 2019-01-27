@@ -13,7 +13,7 @@ function Room(id, io, fps)
     this.playerCount = 0;
 
     this.started = false;
-    this.level = new Level(20, 20);
+    this.level = new Level(32, 16);
     this.level.put(new Item(5, 5), 5, 5);
     this.level.put(new Item(5, 5), 10, 5);
     this.level.put(new Item(5, 5), 5, 10);
@@ -72,9 +72,12 @@ Room.prototype.StopGame = function StopGame()
     this.started = false;
 };
 
+/**
+ * @return {boolean}
+ */
 Room.prototype.HasSpotAvailable = function HasSpotAvailable()
 {
     return this.playersCount < this.capacity;
-}
+};
 
 module.exports = Room;

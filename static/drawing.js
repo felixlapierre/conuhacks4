@@ -17,8 +17,8 @@ function SetupCanvas()
     canvas = document.getElementById("canvas");
     if(canvas == undefined)
         return false;
-    canvas.width = 800;
-    canvas.height = 600;
+    canvas.width  = 1024;
+    canvas.height = 512;
     context = canvas.getContext('2d');
     return true;
 }
@@ -56,7 +56,9 @@ function DrawTiles(map)
 function DrawSingleTile(object, x, y)
 {
     if(object == undefined)
-        DrawFloor(x, y);
+    {
+      DrawFloor(x, y);
+    }
     else if(object.type == "player")
     {
         DrawFloor(x, y);
@@ -80,6 +82,11 @@ function DrawWall(x, y)
 function DrawFloor(x, y)
 {
     DrawImage(images.floor, x, y, 0);
+}
+
+function DrawPaper(x, y)
+{
+  DrawImage(images.paper, x, y, 0);
 }
 
 function DrawPlayer(player, x, y)
