@@ -1,6 +1,7 @@
 const Movement = require('./movement.js');
 const Level = require('./level.js');
 const Item = require('./Item');
+var counter = 0;
 
 function Room(id, io, fps)
 {
@@ -14,10 +15,7 @@ function Room(id, io, fps)
 
     this.started = false;
     this.level = new Level(32, 16);
-    this.level.put(new Item(5, 5), 5, 5);
-    this.level.put(new Item(5, 5), 10, 5);
-    this.level.put(new Item(5, 5), 5, 10);
-};
+}
 
 Room.prototype.AddNewPlayer = function AddNewPlayer(player)
 {
@@ -32,13 +30,16 @@ Room.prototype.AddNewPlayer = function AddNewPlayer(player)
     return this.id;
 };
 
-Room.prototype.StartGame = function StartGame()
-{
-    this.started = true;
-    setInterval(() => {
-        this.Update();
-    }, 1000/fps);
-};
+function randomPaperCreate(level){
+  var x = Math.floor(Math.random()*32);
+  var y = Math.floor(Math.random()*16);
+
+  if(level.get(x, y) == undefined) {
+    level.put(new Item(x, y), x, y);
+  } else {
+    randomPaperCreate(level);
+  }
+}
 
 Room.prototype.UpdatePlayerIntent = function UpdatePlayerIntent(id, intent)
 {
@@ -47,7 +48,13 @@ Room.prototype.UpdatePlayerIntent = function UpdatePlayerIntent(id, intent)
 
 Room.prototype.Update = function Update()
 {
-    for(var playerId in this.players)
+  counter++;
+  if (counter == 60) {
+    randomPaperCreate(this.level);
+    counter = 0;
+  }
+
+  for(var playerId in this.players)
     {
       if(this.players.hasOwnProperty(playerId))
       {
