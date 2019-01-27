@@ -5,6 +5,8 @@ console.log("Loaded drawing.js");
 var images = {};
 images.player = new Image();
 images.player.src = "static/egg.png";
+images.wasabi = new Image();
+images.wasabi.src = "static/wasabi.png";
 images.wall = new Image();
 images.wall.src = "static/wall.png";
 images.floor = new Image();
@@ -36,6 +38,7 @@ function SetupCanvas()
 
 function draw(map)
 {
+    playerNumber = 0;
     if(!SetupCanvas())
         return;
     if(map == null)
@@ -125,8 +128,11 @@ function DrawPaper(x, y)
 
 function DrawPlayer(player, x, y)
 {
-    //TODO: Implement rotation
-    DrawImage(images.player, x, y, 0);
+    console.log(player.number);
+    if(player.number == 0)
+        DrawImage(images.player, x, y, 0);
+    else
+        DrawImage(images.wasabi, x, y, 0);
 }
 
 function DrawImage(image, x, y, rotation)

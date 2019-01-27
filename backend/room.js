@@ -24,8 +24,8 @@ function Room(id, io, fps)
 
 Room.prototype.AddNewPlayer = function AddNewPlayer(player)
 {
-    this.players[player.id] = player;
     this.playersCount += 1;
+    this.players[player.id] = player;
 
     if(this.playerCount === this.capacity)
         this.StartGame();
