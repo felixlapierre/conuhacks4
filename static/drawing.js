@@ -4,7 +4,7 @@ var context;
 console.log("Loaded drawing.js");
 var images = {};
 images.player = new Image();
-images.player.src = "static/player.png";
+images.player.src = "static/egg.png";
 images.wall = new Image();
 images.wall.src = "static/wall.png";
 images.floor = new Image();
