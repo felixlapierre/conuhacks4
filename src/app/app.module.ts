@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule, MatExpansionModule, MatListModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
+import {CdkTableModule} from '@angular/cdk/table';
 
 import { AppComponent } from './app.component';
 import {PostCreateComponent} from './posts/post-create/post-create.component';
@@ -29,7 +30,8 @@ import { GamepageComponent } from './posts/gamepage/gamepage.component';
     MatToolbarModule,
     MatListModule,
     MatExpansionModule,
-    HttpClientModule
+    HttpClientModule,
+    CdkTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
