@@ -26,12 +26,20 @@ function MovePlayer(player, level)
 
 function TryGo(player, level, deltaX, deltaY, direction)
 {
-    if(SpotIsVacant(level, player.x + deltaX, player.y + deltaY)) {
-        MovePlayer(level, player, player.x + deltaX, player.y + deltaY);
+    
+    if(SpotWithinBounds(player, level, deltaX, deltaY)
+        && SpotIsVacant(level, player.x + deltaX, player.y + deltaY)) {
+        DoMove(level, player, player.x + deltaX, player.y + deltaY);
         player.facing = direction;
         return true;
     }
     return false;
+}
+
+function SpotWithinBounds(player, level, deltaX, deltaY)
+{
+    return (player.x + deltaX >= 0 && player.x + deltaX < level.length
+        && player.y + deltaY >= 0 && player.y + deltaY < level[0].length);
 }
 
 function SpotIsVacant(level, x, y)
@@ -48,7 +56,7 @@ function SpotIsVacant(level, x, y)
     }
 }
 
-function MovePlayer(level, player, x, y)
+function DoMove(player, level, x, y)
 {
     level.put(undefined, player.x, player.y);
     level.put(player, x, y)

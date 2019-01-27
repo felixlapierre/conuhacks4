@@ -1,26 +1,26 @@
 const Movement = require('./movement.js');
 const Level = require('./level.js');
 
-function Room(id, broadcast, fps)
+function Room(id, io, fps)
 {
     this.id = id;
     this.fps = fps;
-    this.broadcast = broadcast;
+    this.io = io;
 
     this.capacity = 2;
     this.players = {};
-    this.players.count = 0;
+    this.playerCount = 0;
 
     this.started = false;
-    this.level = new Level();
+    this.level = new Level(10, 10);
 };
 
 Room.prototype.AddNewPlayer = function AddNewPlayer(player)
 {
     this.players[player.id] = player;
-    this.players.count += 1;
+    this.playersCount += 1;
 
-    if(this.players.count === this.capacity)
+    if(this.playerCount === this.capacity)
         this.StartGame();
 };
 
@@ -46,13 +46,14 @@ Room.prototype.Update = function Update()
         Movement.MovePlayer(this.players[playerId], this.level)
       }
     }
-    broadcast(this.id, "state", this.level.getArray());
+    var tiles = this.level.getArray();
+    this.io(this.id, 'state', tiles);
 };
 
 Room.prototype.RemovePlayer = function RemovePlayer(id)
 {
-    this.players[id] = undefined;
-    this.players.count -= 1;
+    delete this.players[id];
+    this.playersCount -= 1;
     this.StopGame();
 };
 
@@ -63,7 +64,7 @@ Room.prototype.StopGame = function StopGame()
 
 Room.prototype.HasSpotAvailable = function HasSpotAvailable()
 {
-    return this.players.count < this.capacity;
+    return this.playersCount < this.capacity;
 }
 
 module.exports = Room;

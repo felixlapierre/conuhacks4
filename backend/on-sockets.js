@@ -1,36 +1,32 @@
 const socketIO = require('socket.io')
+var Controller = require("./controller.js");
+var server;
+var io;
+module.exports = function(a_server)
+{
+    server = a_server;
 
-function Sockets(server, callback) {
-    this.io = socketIO(server);
-    this.callback = callback;
-    
-}
+    io = socketIO(server);
 
-Sockets.prototype.open = function open() {
-    var callback = this.callback;
-    this.io.on('connection', function (socket) {
+    io.on('connection', function (socket) {
         socket.on('new connection', function () {
-            console.log("Detected a new connection!");
+            console.log("Detected a new connection! " + socket.id);
         });
 
         socket.on('new player', function() {
-            callback.AddNewPlayer(socket.id, this.emit);
+            Controller.AddNewPlayer(socket.id, emit);
         });
 
         socket.on('disconnect', function() {
-            callback.RemovePlayer(socket.id);
+            Controller.RemovePlayer(socket.id);
         });
 
-        socket.on('intent', function() {
-            callback.OnPlayerSendIntent(socket.id);
+        socket.on('intent', function(data) {
+            Controller.OnPlayerSendIntent(socket.id, data);
         });
     })
-
-};
-
-Sockets.prototype.emit = function(roomID, messageType, messageContents)
+}
+function emit(roomID, messageType, messageContents)
 {
     io.to(roomID).emit(messageType, messageContents);
 }
-
-module.exports = Sockets;

@@ -1,20 +1,36 @@
 const TILESIZE = 32;
 var canvas;
-canvas = document.getElementById("canvas");
-
-
-canvas.width = 800;
-canvas.height = 600;
-
-var context = canvas.getContext('2d');
+var context;
 
 var images = {};
 images.player = new Image().src = "static/player.png";
 images.wall = new Image().src = "static/wall.png";
 images.floor = new Image().src = "static/floor.png";
 
+setInterval(draw(map), 1000/30);
+
+function SetupCanvas()
+{
+    canvas = document.getElementById("canvas");
+    if(canvas = undefined)
+        return false;
+    canvas.width = 800;
+    canvas.height = 600;
+    context = canvas.getContext('2d');
+    return true;
+}
+
 function draw(map)
 {
+    if(canvas == undefined)
+    {
+        if(!SetupCanvas())
+            return;
+    }
+    if(map == null)
+    {
+        console.log("Map not yet recieved from server");
+    }
     if(map == undefined)
     {
         console.log("Map recieved from server was undefined!");
@@ -22,7 +38,7 @@ function draw(map)
     }
 
     context.clearRect(0, 0, 800, 600);
-
+    console.log("Drawing map");
     DrawTiles(map);
 }
 
@@ -74,3 +90,4 @@ function DrawImage(image, x, y, rotation)
     context.drawImage(image, 0, 0, image.width, image.height,
         -TILESIZE/2, -TILESIZE/2, TILESIZE, TILESIZE);
 }
+

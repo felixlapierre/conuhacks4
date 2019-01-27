@@ -9,6 +9,8 @@ const Room = require('./room.js');
 var roomIdCounter = 0;
 const fps = 30;
 
+setInterval(Update, 1000/fps);
+
 function AddNewPlayer(id, io)
 {
   var room = FindRoomWithEmptySpot();
