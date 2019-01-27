@@ -23,11 +23,8 @@ function SetupCanvas()
 
 function draw(map)
 {
-    if(canvas == undefined)
-    {
-        if(!SetupCanvas())
-            return;
-    }
+    if(!SetupCanvas())
+        return;
     if(map == null)
     {
         console.log("Map not yet recieved from server");
