@@ -12,7 +12,7 @@ function Room(id, io, fps)
     this.playerCount = 0;
 
     this.started = false;
-    this.level = new Level(20, 20);
+    this.level = new Level(32, 16);
 }
 
 Room.prototype.AddNewPlayer = function AddNewPlayer(player)
