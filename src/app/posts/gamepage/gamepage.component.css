@@ -1,9 +1,14 @@
 canvas {
-  padding-left: 0;
-  padding-right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+  border: 1px solid black;
   width: 1000px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+
+button {
+  position: absolute;
+  top: 3%;
+  left: 44%;
 }
 
