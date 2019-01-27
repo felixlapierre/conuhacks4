@@ -9,6 +9,7 @@ function Player(socket){
     };
     this.id=socket;
     this.facing = 'down';
+    this.type = 'player';
 };
 
 Player.prototype.setIntent = function(intent){
