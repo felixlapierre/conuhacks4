@@ -13,7 +13,7 @@ Level.prototype.put = function put(object, x, y)
     tiles[x][y] = object;
 }
 
-Level.prototype.getTileAtLocation = function getTileAtLocation(x, y)
+Level.prototype.get = function get(x, y)
 {
     return tiles[x][y];
 }
@@ -22,3 +22,5 @@ Level.prototype.getArray = function getArray()
 {
     return tiles;
 }
+
+module.exports = Level;

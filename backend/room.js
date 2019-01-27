@@ -1,3 +1,6 @@
+const Movement = require('movement.js');
+const Level = require('level.js');
+
 function Room(id, broadcast, fps)
 {
     this.id = id;
@@ -43,11 +46,7 @@ Room.prototype.Update = function Update()
     {
       if(this.players.hasOwnProperty(playerId))
       {
-        var player = this.players[playerId];
-        var intent = player.getIntent();
-        var facing = player.facing;
-    //TODO: Update logic
-        
+        Movement.MovePlayer(this.players[playerId], this.level)
       }
     }
 

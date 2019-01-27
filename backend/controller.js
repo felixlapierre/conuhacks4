@@ -1,7 +1,10 @@
 var exports = module.exports = {};
+
 var rooms = {};
 var mapPlayerIdToRoomId = {};
-const player = require('player.js');
+
+const Player = require('player.js');
+
 var roomIdCounter = 0;
 const fps = 30;
 
@@ -10,7 +13,7 @@ function AddNewPlayer(id, io)
   var room = FindRoomWithEmptySpot;
   if(room != undefined)
   {
-    room.AddNewPlayer( player(id) );
+    room.AddNewPlayer( new Player(id) );
   }
   else
   {
