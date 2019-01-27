@@ -3,7 +3,8 @@ var exports = module.exports = {};
 var rooms = {};
 var mapPlayerIdToRoomId = {};
 
-const Player = require('player.js');
+const Player = require('./player.js');
+const Room = require('./room.js');
 
 var roomIdCounter = 0;
 const fps = 30;

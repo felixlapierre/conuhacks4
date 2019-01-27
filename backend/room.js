@@ -1,5 +1,5 @@
-const Movement = require('movement.js');
-const Level = require('level.js');
+const Movement = require('./movement.js');
+const Level = require('./level.js');
 
 function Room(id, broadcast, fps)
 {
