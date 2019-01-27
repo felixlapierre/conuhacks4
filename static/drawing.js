@@ -1,6 +1,7 @@
 const TILESIZE = 32;
+var canvas;
+canvas = document.getElementById("canvas");
 
-var canvas = document.getElementById("canvas");
 
 canvas.width = 800;
 canvas.height = 600;

@@ -11,7 +11,7 @@ const fps = 30;
 
 function AddNewPlayer(id, io)
 {
-  var room = FindRoomWithEmptySpot;
+  var room = FindRoomWithEmptySpot();
   if(room != undefined)
   {
     room.AddNewPlayer( new Player(id) );
@@ -40,7 +40,8 @@ function FindRoomWithEmptySpot()
 
 function CreateRoomAndAddPlayerToIt(id, io)
 {
-  rooms[roomIdCounter] = new Room(roomIdCounter, io, fps);
+  room = new Room(roomIdCounter, io, fps);
+  rooms[roomIdCounter] = room;
   mapPlayerIdToRoomId[id] = roomIdCounter;
 
   room.AddNewPlayer(new Player(id));
@@ -71,6 +72,18 @@ function OnPlayerSendIntent(id, intent)
     return;
   }
   room.UpdatePlayerIntent(id, intent);
+}
+
+function Update()
+{
+  for(var roomId in rooms)
+  {
+    if(rooms.hasOwnProperty(roomId))
+    {
+      var room = rooms[roomId];
+      room.Update();
+    }
+  }
 }
 
 exports.AddNewPlayer = AddNewPlayer;

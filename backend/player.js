@@ -12,11 +12,11 @@ function Player(socket){
     this.type = 'player';
 };
 
-Player.prototype.setIntent = function(intent){
+Player.prototype.SetIntent = function(intent){
     this.intent=intent;
 };
 
-Player.prototype.getIntent = function(){
+Player.prototype.GetIntent = function(){
     return this.intent;
 };
 

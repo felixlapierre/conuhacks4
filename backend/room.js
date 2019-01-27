@@ -39,9 +39,6 @@ Room.prototype.UpdatePlayerIntent = function UpdatePlayerIntent(id, intent)
 
 Room.prototype.Update = function Update()
 {
-
-    broadcast(this.id, "state", this.level.getArray());
-    
     for(var playerId in this.players)
     {
       if(this.players.hasOwnProperty(playerId))
@@ -49,7 +46,7 @@ Room.prototype.Update = function Update()
         Movement.MovePlayer(this.players[playerId], this.level)
       }
     }
-
+    broadcast(this.id, "state", this.level.getArray());
 };
 
 Room.prototype.RemovePlayer = function RemovePlayer(id)
@@ -68,3 +65,5 @@ Room.prototype.HasSpotAvailable = function HasSpotAvailable()
 {
     return this.players.count < this.capacity;
 }
+
+module.exports = Room;

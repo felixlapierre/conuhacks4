@@ -4,29 +4,29 @@ function Level(x, y)
 
     for(i = 0; i < this.tiles.length; ++i)
     {
-        tiles[i] = new Array(y);
+        this.tiles[i] = new Array(y);
     }
 }
 
 Level.prototype.put = function put(object, x, y)
 {
-    tiles[x][y] = object;
+    this.tiles[x][y] = object;
 }
 
 Level.prototype.get = function get(x, y)
 {
-    return tiles[x][y];
+    return this.tiles[x][y];
 }
 
 Level.prototype.getArray = function getArray()
 {
-    return tiles;
+    return this.tiles;
 }
 
 Level.prototype.generatePlaceholderLevel = function generatePlaceholderLevel()
 {
     this.tiles[3][3] = { type:'wall'};
-    this.tiles[5][5] = {type:'wall'};
+    this.tiles[5][5] = { type:'wall'};
 }
 
 module.exports = Level;
