@@ -9,6 +9,8 @@ images.wall = new Image();
 images.wall.src = "static/wall.png";
 images.floor = new Image();
 images.floor.src = "static/floor.png";
+images.paper = new Image();
+images.paper.src = "static/paper.png";
 
 function SetupCanvas()
 {
@@ -62,6 +64,12 @@ function DrawSingleTile(object, x, y)
     }
     else if(object.type == "wall")
         DrawWall(x, y);
+    else if(object.type == "item")
+    {
+        DrawFloor(x, y);
+        DrawImage(images.paper, x, y, 0);
+    }
+    
 }
 
 function DrawWall(x, y)
