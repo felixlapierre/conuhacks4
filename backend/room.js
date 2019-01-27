@@ -16,6 +16,10 @@ function Room(id, io, fps)
     this.started = false;
     this.level = new Level(32, 16);
 
+    this.level.put({type: 'wall', material: 'paper'}, 10, 5);
+    this.level.put({type: 'wall', material: 'trash'}, 10, 10);
+    this.level.put({type: 'wall', material: 'plastic'}, 10, 15);
+
   }
 
 Room.prototype.AddNewPlayer = function AddNewPlayer(player)
@@ -58,7 +62,7 @@ Room.prototype.UpdatePlayerIntent = function UpdatePlayerIntent(id, intent)
 Room.prototype.Update = function Update()
 {
   counter++;
-  if (counter == 60) {
+  if (counter == 30) {
     randomItemCreate(this.level);
     counter = 0;
   }

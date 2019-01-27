@@ -12,13 +12,18 @@ images.wall.src = "static/wall.png";
 images.floor = new Image();
 images.floor.src = "static/floor.png";
 images.paper = new Image();
-images.paper.src = "static/paper.png";
+images.paper.src = "static/paper2.png";
 images.plastic = new Image();
 images.plastic.src = "static/bottle.png";
 images.trash = new Image();
 images.trash.src = "static/trash.png";
 
-var playerNumber = 0;
+images.plasticTile = new Image();
+images.plasticTile.src = "static/bottleTilepng.png";
+images.trashTile = new Image();
+images.trashTile.src = "static/trashTile.png";
+images.paperTile = new Image();
+images.paperTile.src = "static/paperTile.png";
 
 function SetupCanvas()
 {
@@ -75,7 +80,7 @@ function DrawSingleTile(object, x, y)
     }
     else if(object.type == "wall")
     {
-      DrawWall(x, y);
+      DrawWall(object, x, y);
     }
     else if(object.type == "item" && object.material == "paper")
     {
@@ -94,9 +99,21 @@ function DrawSingleTile(object, x, y)
     }
 }
 
-function DrawWall(x, y)
+function DrawWall(object, x, y)
 {
-    DrawImage(images.wall, x, y, 0);
+    switch(object.material)
+    {
+        case 'plastic' :
+        DrawImage(images.plasticTile, x, y, 0);
+        break;
+        case 'trash' :
+        DrawImage(images.trashTile, x, y, 0);
+        break;
+        case 'paper' :
+        DrawImage(images.paperTile, x, y, 0);
+        break;
+    }
+   
 }
 
 function DrawFloor(x, y)
