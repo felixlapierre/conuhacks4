@@ -1,6 +1,3 @@
-var socket = io();
-
-socket.emit('new connection');
 var intent = {
 	up: false,
 	down: false,
@@ -42,6 +39,3 @@ document.addEventListener('keyup', function(event) {
 		break;
 	}
 });
-
-var map=undefined.
-socket.emit('new connection');
