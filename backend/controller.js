@@ -1,20 +1,27 @@
 var exports = module.exports = {};
+
 var rooms = {};
 var mapPlayerIdToRoomId = {};
+
+const Player = require('./player.js');
+const Room = require('./room.js');
 
 var roomIdCounter = 0;
 const fps = 30;
 
+setInterval(Update, 1000/fps);
+
 function AddNewPlayer(id, io)
 {
-  var room = FindRoomWithEmptySpot;
+  var room = FindRoomWithEmptySpot();
   if(room != undefined)
   {
-    room.AddNewPlayer();
+    mapPlayerIdToRoomId[id] = room.id;
+    return room.AddNewPlayer( new Player(id) );
   }
   else
   {
-    CreateRoomAndAddPlayerToIt(id, io);
+    return CreateRoomAndAddPlayerToIt(id, io);
   }
 }
 
@@ -36,9 +43,13 @@ function FindRoomWithEmptySpot()
 
 function CreateRoomAndAddPlayerToIt(id, io)
 {
-  rooms[roomIdCounter] = new Room(roomIdCounter, io, fps);
+  room = new Room(roomIdCounter, io, fps);
+  rooms[roomIdCounter] = room;
   mapPlayerIdToRoomId[id] = roomIdCounter;
+
   roomIdCounter++;
+
+  return room.AddNewPlayer(new Player(id));
 }
 
 function RemovePlayer(id)
@@ -50,6 +61,7 @@ function RemovePlayer(id)
   {
     return;
   }
+  delete mapPlayerIdToRoomId[id];
 
   room.RemovePlayer(id)
   room.StopGame();
@@ -64,6 +76,18 @@ function OnPlayerSendIntent(id, intent)
     return;
   }
   room.UpdatePlayerIntent(id, intent);
+}
+
+function Update()
+{
+  for(var roomId in rooms)
+  {
+    if(rooms.hasOwnProperty(roomId))
+    {
+      var room = rooms[roomId];
+      room.Update();
+    }
+  }
 }
 
 exports.AddNewPlayer = AddNewPlayer;

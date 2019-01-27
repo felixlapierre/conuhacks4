@@ -51,8 +51,4 @@ server.on("error", onError);
 server.on("listening", onListening);
 server.listen(port);
 
-var Controller = require("./backend/controller.js");
-
-var SocketsListener = require("./backend/on-sockets");
-var sockets = new SocketsListener(server, Controller);
-sockets.open();
+var sockets = require("./backend/on-sockets")(server);
