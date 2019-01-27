@@ -1,3 +1,5 @@
+var number = 0;
+
 function Player(socket){
     this.score = 0;
     this.x=0;
@@ -11,6 +13,7 @@ function Player(socket){
     this.id=socket;
     this.facing = 'down';
     this.type = 'player';
+    this.number = number++;
 
     this.tail = null;
 };
