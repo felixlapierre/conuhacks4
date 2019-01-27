@@ -8,6 +8,7 @@ function Player(socket){
         right: false
     };
     this.id=socket;
+    this.facing = 'down';
 };
 
 Player.prototype.setIntent = function(intent){
@@ -18,3 +19,4 @@ Player.prototype.getIntent = function(){
     return this.intent;
 };
 
+module.exports = Player;
