@@ -7,7 +7,7 @@ const Player = require('./player.js');
 const Room = require('./room.js');
 
 var roomIdCounter = 0;
-const fps = 30;
+const fps = 15;
 
 setInterval(Update, 1000/fps);
 
