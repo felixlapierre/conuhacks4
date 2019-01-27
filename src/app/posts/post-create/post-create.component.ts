@@ -17,10 +17,10 @@ export class PostCreateComponent {
     this.newUserEntered = false;
     this.postsService.newUserEntered.emit(this.newUserEntered);
 
-    if (form.invalid) {
+/*    if (form.invalid) {
       return;
-    }
-    this.postsService.addPost(form.value.title, form.value.content);
+  }*/
+    // this.postsService.addPost('haha', '123');
     form.resetForm();
   }
 }
