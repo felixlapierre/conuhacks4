@@ -55,7 +55,7 @@ function SpotIsVacant(level, player, x, y)
         case 'wall':
             return false;
         case 'item':
-            if(object.owner === player)
+            if(object.owner === player.id)
                 return false;
         default:
             return true;

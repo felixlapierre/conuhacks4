@@ -17,6 +17,11 @@ function Room(id, io, fps)
     this.level.put(new Item(5, 5), 5, 5);
     this.level.put(new Item(5, 5), 10, 5);
     this.level.put(new Item(5, 5), 5, 10);
+    this.level.put(new Item(5, 5), 10, 10);
+    this.level.put(new Item(5, 5), 15, 10);
+    this.level.put(new Item(5, 5), 20, 10);
+    this.level.put(new Item(5, 5), 25, 10);
+
 };
 
 Room.prototype.AddNewPlayer = function AddNewPlayer(player)

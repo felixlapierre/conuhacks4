@@ -20,7 +20,10 @@ Item.prototype.Move = function Move(level, x, y, appended)
 
     if(this.tail != null) 
     {
-        this.tail.Move(level, tempX, tempY, appended);
+        if(this.tail.owner == this.owner)
+            this.tail.Move(level, tempX, tempY, appended);
+        else
+            this.tail.ClearOwner();
     }
     else
     {
@@ -32,6 +35,13 @@ Item.prototype.Move = function Move(level, x, y, appended)
             level.put(appended, tempX, tempY);
         }
     }
+}
+
+Item.prototype.ClearOwner = function ClearOwner()
+{
+    this.owner = null;
+    if(this.tail != null)
+        this.tail.ClearOwner();
 }
 
 module.exports = Item;
