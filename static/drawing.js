@@ -9,14 +9,16 @@ images.wall = new Image();
 images.wall.src = "static/wall.png";
 images.floor = new Image();
 images.floor.src = "static/floor.png";
+images.paper = new Image();
+images.paper.src = "static/paper.png";
 
 function SetupCanvas()
 {
     canvas = document.getElementById("canvas");
     if(canvas == undefined)
         return false;
-    canvas.width = 1024;
-    canvas.height = 640;
+    canvas.width  = 1000;
+    canvas.height = 600;
     context = canvas.getContext('2d');
     return true;
 }
@@ -54,14 +56,22 @@ function DrawTiles(map)
 function DrawSingleTile(object, x, y)
 {
     if(object == undefined)
-        DrawFloor(x, y);
+    {
+      DrawFloor(x, y);
+    }
     else if(object.type == "player")
     {
         DrawFloor(x, y);
         DrawPlayer(object, x, y);
     }
     else if(object.type == "wall")
-        DrawWall(x, y);
+    {
+      DrawWall(x, y);
+    }
+    else if(object.type == "paper")
+    {
+      DrawPaper(x, y);
+    }
 }
 
 function DrawWall(x, y)
@@ -72,6 +82,11 @@ function DrawWall(x, y)
 function DrawFloor(x, y)
 {
     DrawImage(images.floor, x, y, 0);
+}
+
+function DrawPaper(x, y)
+{
+  DrawImage(images.paper, x, y, 0);
 }
 
 function DrawPlayer(player, x, y)
