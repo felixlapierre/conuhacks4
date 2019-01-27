@@ -1,12 +1,11 @@
 mat-form-field {
-  color: darkgreen;
+  color: darkblue;
   width: 100%;
   font-family: "Silkscreen Expanded", "Comic Sans MS";
 }
 
 button {
   margin-top: 10px;
-  color: green;
   font-family: "Silkscreen Expanded", "Comic Sans MS";
 }
 
