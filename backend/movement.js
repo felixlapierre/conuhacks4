@@ -28,7 +28,7 @@ function TryGo(player, level, deltaX, deltaY, direction)
 {
     
     if(SpotWithinBounds(player, level, deltaX, deltaY)
-        && SpotIsVacant(level, player.x + deltaX, player.y + deltaY)) {
+        && SpotIsVacant(level, player, player.x + deltaX, player.y + deltaY)) {
         DoMove(player, level, player.x + deltaX, player.y + deltaY);
         player.facing = direction;
         return true;
@@ -42,7 +42,7 @@ function SpotWithinBounds(player, level, deltaX, deltaY)
         && player.y + deltaY >= 0 && player.y + deltaY < level.Y());
 }
 
-function SpotIsVacant(level, x, y)
+function SpotIsVacant(level, player, x, y)
 {
     var object = level.get(x, y);
     if(object == undefined)
@@ -54,6 +54,9 @@ function SpotIsVacant(level, x, y)
         case 'player':
         case 'wall':
             return false;
+        case 'item':
+            if(object.owner === player)
+                return false;
         default:
             return true;
     }

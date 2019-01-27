@@ -36,6 +36,7 @@ Player.prototype.Move = function Move(level, x, y)
 
     if(object != undefined && object.type == "item")
     {
+        object.owner = this;
         if(this.tail == null)
         {
             this.tail = object;

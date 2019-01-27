@@ -5,6 +5,7 @@ function Item(x, y)
     this.type = 'item';
     this.material = 'paper';
     this.tail = null;
+    this.owner = null;
 }
 
 Item.prototype.Move = function Move(level, x, y, appended)
