@@ -47,7 +47,7 @@ app.get('/posts',(req, res, next) => {
     });
 });
 
-app.put("/posts/:id", (req, res, next) => {
+/*app.put("/posts/:id", (req, res, next) => {
   const post = new Post({
     _id: req.body.id,
     title: req.body.title,
@@ -58,7 +58,7 @@ app.put("/posts/:id", (req, res, next) => {
       res.status(200).json({message: 'Update Successful!'})
     }
   )
-})
+})*/
 
 app.delete('/posts/:id', (req, res, next) => {
   console.log(req.params.id)
