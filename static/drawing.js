@@ -7,6 +7,8 @@ images.player = new Image();
 images.player.src = "static/egg.png";
 images.wasabi = new Image();
 images.wasabi.src = "static/wasabi.png";
+images.mochi = new Image();
+images.mochi.src = "static/mochi.png";
 images.wall = new Image();
 images.wall.src = "static/wall.png";
 images.floor = new Image();
@@ -131,8 +133,10 @@ function DrawPlayer(player, x, y)
     console.log(player.number);
     if(player.number == 0)
         DrawImage(images.player, x, y, 0);
-    else
+    else if (player.number==1)
         DrawImage(images.wasabi, x, y, 0);
+    else
+        DrawImage(images.mochi, x, y, 0);
 }
 
 function DrawImage(image, x, y, rotation)

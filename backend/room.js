@@ -9,7 +9,7 @@ function Room(id, io, fps)
     this.fps = fps;
     this.io = io;
 
-    this.capacity = 2;
+    this.capacity = 3;
     this.players = {};
     this.playerCount = 0;
 
