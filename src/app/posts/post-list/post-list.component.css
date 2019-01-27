@@ -1,4 +1,4 @@
-:host{
+:host {
   display: block;
   margin-top: 1rem;
 }
@@ -7,11 +7,13 @@
   text-align: center;
 }
 
-h3 {
-  text-align: center;
-  color: darkgreen;
+table {
+  border-spacing: 20px;
+  margin: 0;
+  padding: 0;
 }
 
-mat-list, mat-list-item {
-  font-family: "Silkscreen Expanded", "Comic Sans MS";
+div {
+  text-align: center;
+  color: darkgreen;
 }

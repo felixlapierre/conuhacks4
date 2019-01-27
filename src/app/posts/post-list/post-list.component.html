@@ -1,8 +1,29 @@
-<h3>Rank &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Score &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name</h3>
+<div>
+  <table cdk-table style="float: left;" [dataSource]="indexI">
 
-<mat-list>
-  <mat-list-item *ngFor="let post of posts, let i = index">
-      {{i+1}}{{post.content}}{{post.title}}
-  </mat-list-item>
-</mat-list>
+    <ng-container cdkColumnDef="rank">
+      <th cdk-header-cell *cdkHeaderCellDef> Rank</th>
+      <td cdk-cell *cdkCellDef="let indexI"> {{indexI}} </td>
+    </ng-container>
+
+    <tr cdk-header-row *cdkHeaderRowDef="['rank']"></tr>
+    <tr cdk-row *cdkRowDef="let indexI; columns: ['rank']"></tr>
+  </table>
+
+  <table cdk-table class="user-score-table" style="display: inline-block;" [dataSource]="posts">
+    <ng-container cdkColumnDef="score">
+      <th cdk-header-cell *cdkHeaderCellDef> Score</th>
+      <td cdk-cell *cdkCellDef="let post"> {{post.content}} </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="username">
+      <th cdk-header-cell *cdkHeaderCellDef> Name</th>
+      <td cdk-cell *cdkCellDef="let post"> {{post.title}} </td>
+    </ng-container>
+
+    <tr cdk-header-row *cdkHeaderRowDef="['score', 'username']"></tr>
+    <tr cdk-row *cdkRowDef="let post; columns: ['score', 'username']"></tr>
+  </table>
+</div>
+
 <p class="info-text mat-body-1" style="color: darkgreen" *ngIf="posts.length <= 0">No Highscores!</p>
