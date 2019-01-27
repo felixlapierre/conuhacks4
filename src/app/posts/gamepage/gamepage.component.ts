@@ -14,5 +14,8 @@ export class GamepageComponent {
   returnToHomePage() {
     this.newUserEntered = true;
     this.postsService.newUserEntered.emit(this.newUserEntered);
+
+    // update code when the fix is there
+    // this.postsService.addPost('lala', '43');
   }
 }

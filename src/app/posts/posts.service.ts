@@ -7,6 +7,8 @@ import {reduce} from 'rxjs/operators';
 @Injectable({providedIn: 'root'})
 export class PostsService {
   public newUserEntered = new EventEmitter<boolean>();
+  // public postId;
+  // public postTitle;
 
   private posts: PostModel[] = [];
   private postsUpdated = new Subject<PostModel[]>();
@@ -21,7 +23,14 @@ export class PostsService {
       });
   }
 
+  updatePost(id: string, title: string, content: string) {
+    const post: PostModel = {id: id, title: title, content: content};
+    this.httpClient.put('http://localhost:3000/posts/' + id, post)
+      .subscribe(response => console.log(response));
+  }
+
   private sortArray(posts: PostModel[]) {
+    // this.postId = posts[posts.length - 1]['_id'];
     posts.sort((a, b) => +a.content > +b.content ? -1 : +a.content < +b.content ? 1 : 0);
     return posts.slice(0, 5);
   }
@@ -37,6 +46,7 @@ export class PostsService {
         console.log(responseData.message);
         this.posts.push(post);
         this.postsUpdated.next([...this.posts]);
+        // this.postTitle = post.title;
       });
   }
 }
