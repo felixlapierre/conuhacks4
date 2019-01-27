@@ -40,12 +40,12 @@ function DrawSingleTile(object, x, y)
 {
     if(object == undefined)
         DrawFloor(x, y);
-    else if(object.constructor.name == "Player")
+    else if(object.type == "player")
     {
         DrawFloor(x, y);
         DrawPlayer(object, x, y);
     }
-    else if(object.constructor.name == "Wall")
+    else if(object.type == "wall")
         DrawWall(x, y);
 }
 

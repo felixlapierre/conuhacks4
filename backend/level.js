@@ -23,4 +23,10 @@ Level.prototype.getArray = function getArray()
     return tiles;
 }
 
+Level.prototype.generatePlaceholderLevel = function generatePlaceholderLevel()
+{
+    this.tiles[3][3] = { type:'wall'};
+    this.tiles[5][5] = {type:'wall'};
+}
+
 module.exports = Level;

@@ -42,6 +42,9 @@ function CreateRoomAndAddPlayerToIt(id, io)
 {
   rooms[roomIdCounter] = new Room(roomIdCounter, io, fps);
   mapPlayerIdToRoomId[id] = roomIdCounter;
+
+  room.AddNewPlayer(new Player(id));
+
   roomIdCounter++;
 }
 

@@ -12,7 +12,7 @@ function Room(id, broadcast, fps)
     this.players.count = 0;
 
     this.started = false;
-    this.level = undefined;
+    this.level = new Level();
 };
 
 Room.prototype.AddNewPlayer = function AddNewPlayer(player)
