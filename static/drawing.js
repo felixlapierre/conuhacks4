@@ -15,8 +15,8 @@ function SetupCanvas()
     canvas = document.getElementById("canvas");
     if(canvas == undefined)
         return false;
-    canvas.width = 800;
-    canvas.height = 600;
+    canvas.width = 1024;
+    canvas.height = 640;
     context = canvas.getContext('2d');
     return true;
 }

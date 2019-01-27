@@ -10,7 +10,7 @@ function Player(socket){
     this.id=socket;
     this.facing = 'down';
     this.type = 'player';
-};
+}
 
 Player.prototype.SetIntent = function(intent){
     this.intent=intent;
