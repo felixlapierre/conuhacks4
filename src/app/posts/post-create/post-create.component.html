@@ -1,4 +1,4 @@
-<div>
+<div class="create">
   <form (submit)="onAddPost(postForm)" #postForm="ngForm">
     <mat-form-field color="accent">
       <input
@@ -12,12 +12,15 @@
         #title="ngModel">
       <mat-error *ngIf="title.invalid">Please enter a username!</mat-error>
     </mat-form-field>
-    <div>
-      <button
-        mat-raised-button
-        color="primary"
-        type="submit">Start Game
-      </button>
-    </div>
+    <button color="primary"
+            [disabled]="title.invalid"
+            id="Button"
+            mat-raised-button
+            type="submit">
+      Start Game
+    </button>
   </form>
 </div>
+
+<br>
+<hr color="darkgreen" size="1">

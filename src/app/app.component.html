@@ -1,10 +1,12 @@
-<app-header *ngIf = newUser></app-header>
+<app-header class="header" *ngIf=newUser></app-header>
 <main>
-  <app-post-create *ngIf = newUser></app-post-create>
-  <br>
-  <hr color="darkgreen" size="1">
-  <app-post-list *ngIf = newUser></app-post-list>
-  <app-gamepage *ngIf = "!newUser"></app-gamepage>
+  <div class="homepage">
+    <app-post-create *ngIf=newUser></app-post-create>
+    <app-post-list *ngIf=newUser></app-post-list>
+  </div>
+  <div class="canvas">
+    <app-gamepage *ngIf="!newUser"></app-gamepage>
+  </div>
 </main>
 
 
