@@ -65,13 +65,13 @@ function DrawSingleTile(object, x, y)
         DrawPlayer(object, x, y);
     }
     else if(object.type == "wall")
+        DrawWall(x, y);
+    else if(object.type == "item")
     {
-      DrawWall(x, y);
+        DrawFloor(x, y);
+        DrawImage(images.paper, x, y, 0);
     }
-    else if(object.type == "paper")
-    {
-      DrawPaper(x, y);
-    }
+    
 }
 
 function DrawWall(x, y)
