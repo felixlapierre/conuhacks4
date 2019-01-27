@@ -61,10 +61,7 @@ function SpotIsVacant(level, x, y)
 
 function DoMove(player, level, x, y)
 {
-    level.put(undefined, player.x, player.y);
-    level.put(player, x, y)
-    player.x = x;
-    player.y = y;
+    player.Move(level, x, y);
 }
 
 exports.MovePlayer = MovePlayer;

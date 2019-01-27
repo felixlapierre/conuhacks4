@@ -1,5 +1,6 @@
 const Movement = require('./movement.js');
 const Level = require('./level.js');
+const Item = require('./Item');
 
 function Room(id, io, fps)
 {
@@ -13,7 +14,10 @@ function Room(id, io, fps)
 
     this.started = false;
     this.level = new Level(32, 16);
-}
+    this.level.put(new Item(5, 5), 5, 5);
+    this.level.put(new Item(5, 5), 10, 5);
+    this.level.put(new Item(5, 5), 5, 10);
+};
 
 Room.prototype.AddNewPlayer = function AddNewPlayer(player)
 {
