@@ -15,7 +15,8 @@ function Room(id, io, fps)
 
     this.started = false;
     this.level = new Level(32, 16);
-}
+
+  }
 
 Room.prototype.AddNewPlayer = function AddNewPlayer(player)
 {
@@ -42,7 +43,7 @@ function randomItemCreate(level){
     }else if(material >= 1 && material <2){
       level.put(new Item(x, y, "plastic"), x, y);
     }else if(material >= 2 && material < 3){
-      //level.put(new Item(x, y, "trash"), x, y);
+      level.put(new Item(x, y, "trash"), x, y);
     }
   } else {
     randomItemCreate(level);
