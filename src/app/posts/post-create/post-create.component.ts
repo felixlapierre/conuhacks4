@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output} from '@angular/core';
 
 import {NgForm} from '@angular/forms';
 import {PostsService} from '../posts.service';
@@ -17,10 +17,13 @@ export class PostCreateComponent {
     this.newUserEntered = false;
     this.postsService.newUserEntered.emit(this.newUserEntered);
 
+    console.log(form.value.title);
+    this.postsService.sendUsername(form.value.title);
+
 /*    if (form.invalid) {
       return;
   }*/
     // this.postsService.addPost('haha', '123');
-    form.resetForm();
+    // form.resetForm();
   }
 }

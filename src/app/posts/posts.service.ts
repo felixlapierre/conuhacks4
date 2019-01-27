@@ -1,12 +1,13 @@
 import {PostModel} from './post.model';
 import {EventEmitter, Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {reduce} from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class PostsService {
   public newUserEntered = new EventEmitter<boolean>();
+  public username: string;
   // public postId;
   // public postTitle;
 
@@ -14,6 +15,11 @@ export class PostsService {
   private postsUpdated = new Subject<PostModel[]>();
 
   constructor(private httpClient: HttpClient) {}
+
+  sendUsername(username: string) {
+    this.username = username;
+    console.log(this.username);
+  }
 
   getPosts() {
     this.httpClient.get<{message: string, posts: PostModel[]}>('http://localhost:3000/posts')
