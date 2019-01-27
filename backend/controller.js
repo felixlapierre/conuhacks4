@@ -16,11 +16,12 @@ function AddNewPlayer(id, io)
   var room = FindRoomWithEmptySpot();
   if(room != undefined)
   {
-    room.AddNewPlayer( new Player(id) );
+    mapPlayerIdToRoomId[id] = room.id;
+    return room.AddNewPlayer( new Player(id) );
   }
   else
   {
-    CreateRoomAndAddPlayerToIt(id, io);
+    return CreateRoomAndAddPlayerToIt(id, io);
   }
 }
 
@@ -46,9 +47,9 @@ function CreateRoomAndAddPlayerToIt(id, io)
   rooms[roomIdCounter] = room;
   mapPlayerIdToRoomId[id] = roomIdCounter;
 
-  room.AddNewPlayer(new Player(id));
-
   roomIdCounter++;
+
+  return room.AddNewPlayer(new Player(id));
 }
 
 function RemovePlayer(id)
@@ -60,6 +61,7 @@ function RemovePlayer(id)
   {
     return;
   }
+  delete mapPlayerIdToRoomId[id];
 
   room.RemovePlayer(id)
   room.StopGame();

@@ -10,6 +10,5 @@ setInterval(function()
 
 socket.on('state', function(data)
 {
-    
-    map = data;
+    draw(data);
 });

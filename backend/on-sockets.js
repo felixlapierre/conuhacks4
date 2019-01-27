@@ -10,11 +10,13 @@ module.exports = function(a_server)
 
     io.on('connection', function (socket) {
         socket.on('new connection', function () {
-            console.log("Detected a new connection! " + socket.id);
+
         });
 
         socket.on('new player', function() {
-            Controller.AddNewPlayer(socket.id, emit);
+            var roomID = Controller.AddNewPlayer(socket.id, emit);
+            socket.join(roomID);
+            console.log("New player " + socket.id + " in room " + roomID);
         });
 
         socket.on('disconnect', function() {

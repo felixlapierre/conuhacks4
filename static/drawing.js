@@ -1,18 +1,19 @@
 const TILESIZE = 32;
 var canvas;
 var context;
-
+console.log("Loaded drawing.js");
 var images = {};
-images.player = new Image().src = "static/player.png";
-images.wall = new Image().src = "static/wall.png";
-images.floor = new Image().src = "static/floor.png";
-
-setInterval(draw(map), 1000/30);
+images.player = new Image();
+images.player.src = "static/player.png";
+images.wall = new Image();
+images.wall.src = "static/wall.png";
+images.floor = new Image();
+images.floor.src = "static/floor.png";
 
 function SetupCanvas()
 {
     canvas = document.getElementById("canvas");
-    if(canvas = undefined)
+    if(canvas == undefined)
         return false;
     canvas.width = 800;
     canvas.height = 600;
@@ -85,9 +86,10 @@ function DrawPlayer(player, x, y)
 function DrawImage(image, x, y, rotation)
 {
     context.save();
-    context.translate(TILESIZE * x, TILESIZE * y);
+    context.translate(TILESIZE * (x + 0.5), TILESIZE * (y + 0.5));
     context.rotate(rotation);
     context.drawImage(image, 0, 0, image.width, image.height,
         -TILESIZE/2, -TILESIZE/2, TILESIZE, TILESIZE);
+    context.restore();
 }
 

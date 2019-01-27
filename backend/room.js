@@ -12,7 +12,7 @@ function Room(id, io, fps)
     this.playerCount = 0;
 
     this.started = false;
-    this.level = new Level(10, 10);
+    this.level = new Level(20, 20);
 };
 
 Room.prototype.AddNewPlayer = function AddNewPlayer(player)
@@ -22,6 +22,10 @@ Room.prototype.AddNewPlayer = function AddNewPlayer(player)
 
     if(this.playerCount === this.capacity)
         this.StartGame();
+    
+    this.level.put(player, player.x, player.y);
+
+    return this.id;
 };
 
 Room.prototype.StartGame = function StartGame()
@@ -52,6 +56,8 @@ Room.prototype.Update = function Update()
 
 Room.prototype.RemovePlayer = function RemovePlayer(id)
 {
+    var player = this.players[id];
+    this.level.put(undefined, player.x, player.y);
     delete this.players[id];
     this.playersCount -= 1;
     this.StopGame();

@@ -4,12 +4,12 @@ function MovePlayer(player, level)
 {
     if(player.intent.up == true)
     {
-        if(TryGo(player, level, 0, 1, 'up'))
+        if(TryGo(player, level, 0, -1, 'up'))
             return;
     }
     if (player.intent.down == true)
     {
-        if(TryGo(player, level, 0, -1, 'down'))
+        if(TryGo(player, level, 0, 1, 'down'))
             return;
     }
     if (player.intent.left == true)
@@ -29,7 +29,7 @@ function TryGo(player, level, deltaX, deltaY, direction)
     
     if(SpotWithinBounds(player, level, deltaX, deltaY)
         && SpotIsVacant(level, player.x + deltaX, player.y + deltaY)) {
-        DoMove(level, player, player.x + deltaX, player.y + deltaY);
+        DoMove(player, level, player.x + deltaX, player.y + deltaY);
         player.facing = direction;
         return true;
     }
@@ -38,13 +38,16 @@ function TryGo(player, level, deltaX, deltaY, direction)
 
 function SpotWithinBounds(player, level, deltaX, deltaY)
 {
-    return (player.x + deltaX >= 0 && player.x + deltaX < level.length
-        && player.y + deltaY >= 0 && player.y + deltaY < level[0].length);
+    return (player.x + deltaX >= 0 && player.x + deltaX < level.X()
+        && player.y + deltaY >= 0 && player.y + deltaY < level.Y());
 }
 
 function SpotIsVacant(level, x, y)
 {
-    var objectType = level.get(x,y).type;
+    var object = level.get(x, y);
+    if(object == undefined)
+        return true;
+    var objectType = object.type;
     
     switch(objectType)
     {
@@ -60,6 +63,8 @@ function DoMove(player, level, x, y)
 {
     level.put(undefined, player.x, player.y);
     level.put(player, x, y)
+    player.x = x;
+    player.y = y;
 }
 
 exports.MovePlayer = MovePlayer;
